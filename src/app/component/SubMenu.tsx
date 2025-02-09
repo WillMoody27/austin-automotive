@@ -18,6 +18,7 @@ const SubMenu = ({
 
   return (
     <section
+      className={`submenu ${isMobile ? "mobile" : "desktop"}`}
       onMouseEnter={() => !isMobile && setIsDropdownOpen(true)}
       onMouseLeave={() => !isMobile && setIsDropdownOpen(false)}
     >
@@ -62,7 +63,7 @@ const SubMenu = ({
               <a
                 key={index}
                 href={subMenuLink.url}
-                className="block py-3 text-center lg:px-4 lg:py-2 lg:text-left"
+                className="navbar-link block py-3 text-center lg:px-4 lg:py-2 lg:text-left"
               >
                 {subMenuLink.title}
               </a>

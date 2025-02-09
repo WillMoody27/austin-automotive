@@ -1,17 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google"; // Import stays the same
 import "./globals.css";
 import Navbar from "./component/Navbar";
 import { NavbarDefaults } from "@/lib/navbarData";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Rename the variable to avoid conflicts
+const interFont = Inter({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
@@ -26,9 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${interFont.variable} font-sans`}>
         <Navbar {...NavbarDefaults} />
         {children}
       </body>

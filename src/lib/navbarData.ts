@@ -24,9 +24,10 @@ export type NavbarProps = {
 export const NavbarDefaults: NavbarProps = {
   logo: { text: "Logo" },
   navLinks: [
-    { title: "Link One", url: "#" },
-    { title: "Link Two", url: "#" },
-    { title: "Link Three", url: "#" },
+    { title: "Home", url: "#" },
+    { title: "Services", url: "#" },
+    { title: "Our Story", url: "#" },
+    { title: "Contact Us", url: "#" },
     {
       title: "Link Four",
       url: "#",

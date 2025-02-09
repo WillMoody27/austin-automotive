@@ -5,22 +5,22 @@ import { motion } from "framer-motion";
 import { NavbarProps } from "@/lib/navbarData";
 import SubMenu from "./../component/SubMenu";
 import "@/styles/Navbar.css";
+import navLogo from "/public/images/nav-logo.svg";
 
 const Navbar = ({ logo, navLinks, buttons }: NavbarProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Using simple window width checking for mobile responsiveness
-  const isMobile = typeof window !== "undefined" && window.innerWidth <= 991;
-
   return (
     <section
       id="navbar"
-      className="fixed bg-white top-0 left-0 w-full z-10 flex items-center border-b border-border-primary bg-background-primary lg:min-h-18 lg:px-[5%]"
+      className={`fixed top-0 left-0 w-full z-10 flex items-center border-b border-border-primary transition-all duration-300 ${
+        isMobileMenuOpen ? "navbar-white" : "navbar-transparent"
+      } lg:min-h-18 lg:px-[5%]`}
     >
       <div className="mx-auto size-full lg:grid lg:grid-cols-[0.375fr_1fr_0.375fr] lg:items-center lg:justify-between lg:gap-4">
         <div className="flex min-h-16 items-center justify-between px-[5%] md:min-h-18 lg:min-h-full lg:px-0">
           <a href={"#"}>
-            <h1>{logo?.text}</h1>
+            <img src={navLogo.src} alt="Logo" className="navbar-logo h-8 lg:h-10" />
           </a>
           <div className="flex items-center gap-4 lg:hidden">
             <button
@@ -56,12 +56,12 @@ const Navbar = ({ logo, navLinks, buttons }: NavbarProps) => {
         >
           {navLinks?.map((navLink, index) =>
             navLink.subMenuLinks && navLink.subMenuLinks.length > 0 ? (
-              <SubMenu key={index} navLink={navLink} isMobile={isMobile} />
+              <SubMenu key={index} navLink={navLink} isMobile />
             ) : (
               <a
                 key={index}
                 href={navLink.url}
-                className="block py-3 text-md first:pt-7 lg:px-4 lg:py-2 lg:text-base first:lg:pt-2"
+                className="navbar-link block py-3 text-md first:pt-7 lg:px-4 lg:py-2 lg:text-base first:lg:pt-2"
               >
                 {navLink.title}
               </a>
